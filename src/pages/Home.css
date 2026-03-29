@@ -1,0 +1,317 @@
+.home-container {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  background-color: var(--color-bg);
+  background-image: 
+    radial-gradient(circle at top right, var(--color-sunburst) 0%, transparent 40%),
+    radial-gradient(circle at bottom left, var(--color-terracotta-dim) 0%, transparent 60%);
+  background-attachment: fixed;
+}
+
+.bg-pattern-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2h2v2h20v2H22v2.5h18v2H22v2h-2v-2H0v-2h20z' fill='%23C85A3F' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.countdown-mini {
+  font-family: monospace;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--color-terracotta);
+  border: 1px solid var(--color-terracotta-dim);
+  background: rgba(255,255,255,0.7);
+  padding: 8px 16px;
+  border-radius: 40px;
+  backdrop-filter: blur(4px);
+}
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  gap: 60px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .hero-section {
+    flex-direction: column;
+    padding-top: 40px;
+  }
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 500px;
+}
+
+.location-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-terracotta-dim);
+  color: var(--color-terracotta);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+}
+
+.hero-title {
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+  color: var(--color-text);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.hero-title span {
+  color: var(--color-terracotta);
+  display: block;
+}
+
+.hero-icon {
+  color: var(--color-sunburst);
+  opacity: 0.9;
+  filter: drop-shadow(0 4px 6px rgba(221, 167, 79, 0.4));
+  transform: translateY(4px);
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: 40px;
+}
+
+.form-wrapper {
+  flex: 1;
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+}
+
+.registration-form {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 40px;
+  /* Moroccan Arch Style Bottom */
+  border-radius: 20px 20px 80px 80px;
+  border: 1px solid var(--color-border);
+  border-bottom: 6px solid var(--color-sunburst);
+  box-shadow: 0 20px 40px rgba(200, 90, 63, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.registration-form h2 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.registration-form > p {
+  color: var(--color-text-muted);
+  margin-bottom: 30px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.half {
+  flex: 1;
+}
+
+.form-checkbox-group {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 18px;
+  font-size: 1.15rem;
+  border-radius: 40px;
+}
+
+.error-message {
+  background: rgba(200, 90, 63, 0.1);
+  color: var(--color-terracotta);
+  border: 1px solid var(--color-terracotta);
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Success State */
+.success-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.success-content {
+  background: white;
+  padding: 60px 40px;
+  border-radius: 20px 20px 80px 80px;
+  border: 1px solid var(--color-terracotta);
+  border-bottom: 6px solid var(--color-sunburst);
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 20px 50px rgba(200, 90, 63, 0.15);
+  animation: fadeInUp 0.6s ease;
+  z-index: 10;
+}
+
+.success-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+  color: var(--color-terracotta);
+}
+
+.success-content p {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+}
+
+.highlight-gold {
+  color: var(--color-sunburst);
+  font-weight: 600;
+}
+
+.success-tiers {
+  text-align: left;
+  background: var(--color-terracotta-dim);
+  padding: 24px;
+  border-radius: 12px;
+  margin: 30px 0;
+  border: 1px dashed var(--color-terracotta);
+}
+
+.success-tiers ul {
+  list-style-type: none;
+  margin-top: 12px;
+}
+
+.success-tiers li {
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+  color: var(--color-text);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  .registration-form {
+    padding: 24px;
+    border-radius: 12px 12px 40px 40px;
+  }
+  .navbar {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+/* Updated Tier Cards Design */
+.tier-cards-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.tier-card-option {
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tier-card-option:hover {
+  border-color: var(--color-terracotta-dim);
+  background: var(--color-bg);
+}
+
+.tier-card-option.selected {
+  border-color: var(--color-terracotta);
+  background: var(--color-terracotta-dim);
+  box-shadow: 0 4px 12px rgba(200, 90, 63, 0.1);
+}
+
+.tier-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tier-card-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.tier-card-header span {
+  font-size: 0.85rem;
+  color: var(--color-terracotta);
+  font-weight: 600;
+}
+
+.tier-card-price {
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+/* Thematic modifiers for tier cards */
+.tier-card-option.silver-theme.selected {
+  border-color: #8B8570;
+  background: rgba(139, 133, 112, 0.1);
+}
+.tier-card-option.silver-theme.selected .tier-card-header span {
+  color: #8B8570;
+}
+
+.tier-card-option.vip-theme.selected {
+  border-color: var(--color-sunburst);
+  background: rgba(221, 167, 79, 0.1);
+}
+.tier-card-option.vip-theme.selected .tier-card-header span {
+  color: var(--color-sunburst);
+}

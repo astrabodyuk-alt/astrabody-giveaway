@@ -1,0 +1,224 @@
+.draw-container {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  background-image: radial-gradient(circle at center, rgba(221, 167, 79, 0.2) 0%, transparent 60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.bg-sunburst {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  color: var(--color-sunburst);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.sun-pulse {
+  animation: pulse-sun 4s infinite alternate ease-in-out;
+}
+
+@keyframes pulse-sun {
+  0% { transform: scale(1) rotate(0deg); opacity: 0.15; }
+  100% { transform: scale(1.05) rotate(5deg); opacity: 0.25; }
+}
+
+.palm-decor {
+  position: absolute;
+  bottom: -50px;
+  z-index: 0;
+  color: var(--color-gold);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.palm-decor.left {
+  left: -50px;
+  transform: rotate(-15deg);
+}
+
+.palm-decor.right {
+  right: -50px;
+  transform: scaleX(-1) rotate(-15deg);
+}
+
+.draw-header, .draw-arena, .draw-footer {
+  position: relative;
+  z-index: 1;
+}
+
+.draw-header {
+  padding: 40px;
+}
+
+.draw-header .logo {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+  color: var(--color-text);
+  letter-spacing: 4px;
+}
+
+.draw-header .logo span {
+  color: var(--color-terracotta);
+}
+
+.draw-header p {
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.draw-arena {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
+}
+
+.slot-machine {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+}
+
+.slot-idle {
+  font-size: 4rem;
+  color: var(--color-terracotta);
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  text-shadow: 0 4px 20px rgba(200, 90, 63, 0.2);
+}
+
+.slot-name {
+  font-size: 7vw;
+  font-weight: 700;
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  white-space: nowrap;
+}
+
+.slot-name.blurred {
+  animation: blur-text 0.1s infinite alternate;
+}
+
+@keyframes blur-text {
+  0% { filter: blur(0px); transform: translateY(-5px); opacity: 0.9; }
+  100% { filter: blur(8px); transform: translateY(5px); opacity: 0.5; color: var(--color-terracotta); }
+}
+
+.winner-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.winner-display.reveal {
+  animation: scale-up 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes scale-up {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.winner-display h2 {
+  color: var(--color-terracotta);
+  font-size: 1.8rem;
+  letter-spacing: 12px;
+  margin-bottom: 24px;
+  text-shadow: 0 4px 15px rgba(200, 90, 63, 0.3);
+}
+
+.winner-name {
+  font-size: 8vw;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: -4px;
+  color: var(--color-sunburst);
+  text-shadow: 0 4px 30px rgba(221, 167, 79, 0.6), 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.winner-details {
+  background: white;
+  border: 2px solid var(--color-sunburst);
+  color: var(--color-text);
+  padding: 14px 40px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  box-shadow: 0 15px 30px rgba(221, 167, 79, 0.2);
+}
+
+.draw-footer {
+  padding: 60px;
+}
+
+.draw-btn {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border: 2px solid var(--color-terracotta);
+  color: var(--color-terracotta);
+  padding: 24px 60px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(200, 90, 63, 0.15);
+}
+
+.draw-btn:hover {
+  background: var(--color-terracotta);
+  color: white;
+  box-shadow: 0 15px 40px rgba(200, 90, 63, 0.3);
+  transform: scale(1.05) translateY(-4px);
+  border-color: var(--color-terracotta);
+}
+
+.draw-btn.btn-outline {
+  border-color: var(--color-text-muted);
+  color: var(--color-text-muted);
+  box-shadow: none;
+}
+
+.draw-btn.btn-outline:hover {
+  background: var(--color-text);
+  color: white;
+  border-color: var(--color-text);
+}
+
+.draw-btn:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+  .slot-name { font-size: 4rem; }
+  .winner-name { font-size: 4.5rem; letter-spacing: -2px; }
+  .draw-btn { padding: 18px 40px; font-size: 1.2rem; }
+  .bg-sunburst .sun-pulse { transform: scale(0.6); }
+  .palm-decor { opacity: 0.05; }
+}
