@@ -6,10 +6,8 @@ import './Admin.css';
 
 export default function Admin() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [authChecking, setAuthChecking] = useState(true);
-  
+
   const [activeTab, setActiveTab] = useState<'pending' | 'approved'>('pending');
   const [participants, setParticipants] = useState<Participant[]>([]);
   const [loading, setLoading] = useState(false);
@@ -24,38 +22,18 @@ export default function Admin() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setIsAuthenticated(!!session);
-      setAuthChecking(false);
-    });
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setIsAuthenticated(!!session);
-      setAuthChecking(false);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
-
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-    setLoading(false);
-    
-    if (error) {
-      alert(error.message);
+    if (password === import.meta.env.VITE_ADMIN_PASSWORD) {
+      setIsAuthenticated(true);
+    } else {
+      alert('Invalid password');
     }
   };
 
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    setPassword('');
   };
 
   const fetchParticipants = async () => {
@@ -200,25 +178,11 @@ export default function Admin() {
     );
   };
 
-  if (authChecking) {
-    return <div className="admin-login-container">Loading secure environment...</div>;
-  }
-
   if (!isAuthenticated) {
     return (
       <div className="admin-login-container">
         <form className="admin-login-form" onSubmit={handleLogin}>
           <h2>Admin Access</h2>
-          <div className="form-group">
-            <label className="form-label">Email</label>
-            <input 
-              required
-              type="email" 
-              className="form-input" 
-              value={email} 
-              onChange={e => setEmail(e.target.value)} 
-            />
-          </div>
           <div className="form-group">
             <label className="form-label">Password</label>
             <input 
